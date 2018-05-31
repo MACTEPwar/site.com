@@ -15,7 +15,7 @@ $(document).ready(function(){
         function (res) { 
             var d = JSON.parse(res);
             console.log(d.mass);
-            var title=["Username","Username","Username","Username","Username","Username","Username","Username","Username","Username","Username"];
+            var title=["Кол-во человек","Льгота","Период","начисления","сумма льготы","оплочено","супсидия","скидка","всего начислено","входящее сальдо","исходящее сальдо"];
             $("#tThr").append("<tr id='tt0'>");
             title.forEach(function(item, i, arr){
                 $("#tThr").append("<th>"+item+"</th>");
@@ -26,7 +26,19 @@ $(document).ready(function(){
                 $("#tableReport").append('<tr id=tableTr'+i+'></tr>');
                 for(var j=0;j<d.mass[i].length;j++)
                 {
-                    if (j<=9||j>20) continue;
+                    if (j<=4||j==6||j==8||j==9||j>=19) continue;
+                    if (j==7)
+                    {
+                        if (d.mass[i][j] == " ")
+                        {
+                            $("#tableTr"+i).append('<td>Нет льготы</td>');
+                            continue;
+                        }
+                        else{
+                            $("#tableTr"+i).append('<td>Есть льготы</td>');
+                            continue;
+                        }
+                    }
                     $("#tableTr"+i).append('<td>'+d.mass[i][j]+'</td>');
                 }
             }
@@ -34,6 +46,52 @@ $(document).ready(function(){
     });
     $("#logOut").click(function(){
         deleteCookie("PHPSESSID");
+        window.location.href = "./index.php";
+        
+    });
+    $('#regForm').on('submit', function(e) {
+        //regFirstname
+        //regName
+        //regPatronymic
+        //lsOne
+        //lsTwo
+        //passOne
+        //passTwo
+        //regEmail
+        //regPhone
+        //regAddress
+        if ($("#regFirstname").val() == "" || $("#regName").val() == "" || $("#regPatronymic").val() == "" || $("#lsOne").val() == "" || $("#passOne").val() == "" || $("#regEmail").val() == "" || $("#regPhone").val() == "" || $("#regAddress").val() == "") 
+        {
+            alert("Заполните все поля");
+            //$("#lsTwo").style.borderColor = "#ccc";
+            //$("#lsTwo").css('border-color','red');
+            return false;
+        }
+        if ($("#lsOne").val() != $("#lsTwo").val())
+        {
+            alert("Проверьте правильность ввода лицевого счета");
+            
+            return false;
+        }
+        if ($("#passOne").val() != $("#passTwo").val())
+        {
+            alert("Проверьте правильность ввода пароля");
+            return false;
+        }
+    });
+    
+    $("#lsTwo").on('input',function(){
+        if ($("#lsTwo").val() != $("#lsOne").val())
+        {
+            $("#lsTwo").css('border-color','red');
+            $("#lsTwo").css('background-color','#ffcccc');
+            
+            
+        }
+        else{
+            $("#lsTwo").css('border-color','green');
+            $("#lsTwo").css('background-color','rgb(207, 255, 208)');
+        }
     });
 });
 
@@ -43,7 +101,6 @@ function getCookie(name) {
   ));
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
-
 function deleteCookie(name) {
   setCookie(name, "", {
     expires: -1
