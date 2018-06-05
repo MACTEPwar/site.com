@@ -2,6 +2,7 @@
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="./js/script.js"></script>
+        <link href="./css/style.css" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     </head>
     <body style="background-color:#1936a0;">
@@ -10,35 +11,35 @@
                     <form class="form-horizontal"  style="min-width:100%;" action="./query.php?name=reg_form" method="post" id="regForm">
                         <div class="row" style="margin-top:10px;margin-left:0px;margin-right:0px;">
                             <div class="col" style="padding:0;padding-right:5px;">
-                            <input type="text" name="firstname" class="form-control" placeholder="Фамилия" id=regFirstname/>
+                            <input type="text" name="firstname" class="form-control" placeholder="Фамилия" id="regFirstname" pattern="[а-яА-ЯёЁ]{2,64}" required title="Разрешены только буквы кириллицы"/>
                             </div>
                             <div class="col" style="padding:0;padding-right:5px;">
-                            <input type="text" name="username" class="form-control" placeholder="Имя" id="regName"/>
+                            <input type="text" name="username" class="form-control" placeholder="Имя" id="regName" pattern="[а-яА-ЯёЁ]{2,64}" required title="Разрешены только буквы кириллицы"/>
                             </div>
                         </div>
                         <div class="row" style="margin-top:10px;margin-left:0px;margin-right:0px;">
-                            <input type="text" name="patronymic" class="form-control" placeholder="Отчество" id="regPatronymic"/> 
+                            <input type="text" name="patronymic" class="form-control" placeholder="Отчество" id="regPatronymic" pattern="[а-яА-ЯёЁ]{2,64}" required title="Разрешены только буквы кириллицы"/> 
                         </div>
                         <div class="row" style="margin-top:10px;margin-left:0px;margin-right:0px;">
-                            <input id="lsOne" type="text" name="regLogin" class="form-control" placeholder="Лицевой счет"/>
+                            <input id="lsOne" type="text" name="regLogin" class="form-control" placeholder="Лицевой счет" pattern="[0-9]{4,16}" required title="Разрешены только цифры от 4 до 16 символов"/>
                         </div>
                         <div class="row" style="margin-top:10px;margin-left:0px;margin-right:0px;">
-                            <input id="lsTwo" type="text" name="regLoginConfim" class="form-control" placeholder="Повторите лицевой счет"/>
+                            <input id="lsTwo" type="text" name="regLoginConfim" class="form-control" placeholder="Повторите лицевой счет" pattern="[0-9]{4,16}" required title="Разрешены только цифры от 4 до 16 символов"/>
                         </div>
                         <div class="row" style="margin-top:10px;margin-left:0px;margin-right:0px;">
-                            <input id="passOne" type="password" name="regPass" class="form-control" placeholder="Пароль"/>
+                            <input id="passOne" type="password" name="regPass" class="form-control" placeholder="Пароль" pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}" required title="Введенный пароль не соответсвует стандарту. Пароль должен содержать  одну заглавную букву, одну маленькую букву, одну цифру и быть от 8 и более символов."/>
                         </div>
                         <div class="row" style="margin-top:10px;margin-left:0px;margin-right:0px;">
                             <input id="passTwo" type="password" name="regPassConfim" class="form-control" placeholder="Повторите пароль"/>
                         </div>
                         <div class="row" style="margin-top:10px;margin-left:0px;margin-right:0px;">
-                            <input type="text" name="email" class="form-control" placeholder="E-mail" id="regEmail"/>
+                            <input type="email" name="email" class="form-control" placeholder="E-mail" id="regEmail"/>
                         </div>
                         <div class="row" style="margin-top:10px;margin-left:0px;margin-right:0px;">
-                            <input type="text" name="phone" class="form-control" placeholder="Телефон" id="regPhone"/>
+                            <input type="text" name="phone" class="form-control" placeholder="Телефон" id="regPhone" pattern="[0-9]{10}" required title="Неверно указан номер телефона. Введите в формате 0678888888."/>
                         </div>
                         <div class="row" style="margin-top:10px;margin-left:0px;margin-right:0px;">
-                            <input type="text" name="address" class="form-control" placeholder="Адрес" id="regAddress"/>
+                            <input type="text" name="address" class="form-control" placeholder="Адрес" id="regAddress" pattern="[0-9А-я., ]{5,}" required title="Адрес содержит неверные символы."/>
                         </div>
                         <div class="row" style="margin-top:10px;margin-left:0px;margin-right:0px;">
                             <div class="col" style="padding:0;padding-right:5px;">

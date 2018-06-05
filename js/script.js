@@ -93,6 +93,56 @@ $(document).ready(function(){
             $("#lsTwo").css('background-color','rgb(207, 255, 208)');
         }
     });
+    $("#regFirstname").on('input',function(){
+        if(valid("regFirstname",/[а-яА-Я]{1,}/)){
+            $("#regFirstname").removeClass("classDenied");
+            $("#regFirstname").addClass("classAccept");
+        }
+        else{
+            $("#regFirstname").removeClass("classAccept");
+            $("#regFirstname").addClass("classDenied");
+        }
+    });
+    $("#regName").on('input',function(){
+        if(valid("regName",/[а-яА-Я]{1,}/)){
+            $("#regName").removeClass("classDenied");
+            $("#regName").addClass("classAccept");
+        }
+        else{
+            $("#regName").removeClass("classAccept");
+            $("#regName").addClass("classDenied");
+        }
+    });
+    $("#regPatronymic").on('input',function(){
+        if(valid("regPatronymic",/[а-яА-Я]{1,}/)){
+            $("#regPatronymic").removeClass("classDenied");
+            $("#regPatronymic").addClass("classAccept");
+        }
+        else{
+            $("#regPatronymic").removeClass("classAccept");
+            $("#regPatronymic").addClass("classDenied");
+        }
+    });
+    $("#lsOne").on('input',function(){
+        if(valid("lsOne",/[0-9]{4,16}/)){
+            $("#lsOne").removeClass("classDenied");
+            $("#lsOne").addClass("classAccept");
+        }
+        else{
+            $("#lsOne").removeClass("classAccept");
+            $("#lsOne").addClass("classDenied");
+        }
+    });
+    $("#regEmail").on('input',function(){
+        if(valid("regEmail",/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/gm)){
+            $("#regEmail").removeClass("classDenied");
+            $("#regEmail").addClass("classAccept");
+        }
+        else{
+            $("#regEmail").removeClass("classAccept");
+            $("#regEmail").addClass("classDenied");
+        }
+    });
 });
 
 function getCookie(name) {
@@ -133,4 +183,15 @@ function setCookie(name, value, options) {
   }
 
   document.cookie = updatedCookie;
+}
+function valid(id,mask){
+    var reg = mask;
+    if ($("#"+id).val().length == 0) return false;
+    var arr = reg.exec($("#"+id).val());
+    if (arr == null) return false;
+    var a = arr[0];
+    if (a.length == 0) return false;
+    if (a.length == $("#"+id).val().length)
+    return true;
+    else return false;
 }
