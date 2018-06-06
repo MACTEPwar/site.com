@@ -3,7 +3,7 @@ $(document).ready(function(){
                        window.location.href = "./registrarion.php";
     });
     $("#btcRegCancel").click(function(){
-                       window.location.href = "./index.php";
+                       window.location.href = "./vedomost.php";
     });
     $("#getDateFromDb").click(function(){
         
@@ -46,7 +46,7 @@ $(document).ready(function(){
     });
     $("#logOut").click(function(){
         deleteCookie("PHPSESSID");
-        window.location.href = "./index.php";
+        window.location.href = "./vedomost.php";
         
     });
     $('#regForm').on('submit', function(e) {

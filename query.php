@@ -53,7 +53,7 @@ if (isset($_POST['login_form']))
         }
     }
     //echo $_SESSION['user'];
-    header("Location: index.php");
+    header("Location: vedomost.php");
 }
 else if(isset($_POST['btnReg']))
 {
@@ -61,7 +61,7 @@ else if(isset($_POST['btnReg']))
     //$result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
     //mail("shebanic95@gmail.com", "Новый пользователь", "Пользователь ".$_POST['firstname']." ". $_POST['username']." ". $_POST['patronymic']." зарегистрирован\nЛогин   - ".$_POST['regLogin']."\nПароль - ".$_POST['regPass']);
     //mail(.$_POST['email'], "Подтверждение пароля", "Для подтверждения перейдите по ссылке: http://site.com/");
-    //header("Location: index.php");
+    //header("Location: vedomost.php");
     
     $email;
     $regPass = htmlspecialchars($_POST['regPass'],ENT_QUOTES);
@@ -127,7 +127,7 @@ else if(isset($_GET['ver']) && $_GET['ver'] === $_SESSION['ver'])
 {
     $query ="INSERT INTO `users` (`id`, `name`, `serbame`, `patronymic`, `phone`, `address`, `login`, `password`,`email`) VALUES (NULL, '".$_GET['username']."', '".$_GET['firstname']."', '".$_GET['patronymic']."', '".$_GET['phone']."', '".$_GET['address']."', '".$_GET['regLogin']."', '".$_GET['regPass']."','".$_GET['email']."');";
     $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
-    header("Location: index.php");
+    header("Location: vedomost.php");
 }
 
 function strComplete($str)
