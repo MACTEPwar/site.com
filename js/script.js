@@ -1,4 +1,16 @@
 $(document).ready(function(){
+    $("#printReport").click(function(){
+        pr = document.getElementById('tableReport').outerHTML;  
+        pr2 = document.getElementById('headerUser').outerHTML;  
+        pr3 = document.getElementById('titleForReport').outerHTML; 
+        pr4 = document.getElementById('newLgota').outerHTML; 
+        newWin=window.open('','printWindow','Toolbar=0,Location=0,Directories=0,Status=0,Menubar=0,Scrollbars=0,Resizable=0'); 
+        newWin.document.open();
+        newWin.document.write('<html><head><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><link href="./css/style.css" rel="stylesheet"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"></head><body onafterprint="window.close;"><div class="container"><div class="row"><div class="col">'+pr2+'</div><div class="col">'+pr3+'</div></div><div class="row">'+pr4+'</div><div class="row">'+pr+'</div></div><script>$(document).ready(function(){window.print();});</script></body></html>'); 
+        
+        newWin.document.close(); 
+        
+    });
     $("#btnReg").click(function(){
                        window.location.href = "./registrarion.php";
     });
@@ -6,7 +18,10 @@ $(document).ready(function(){
                        window.location.href = "./vedomost.php";
     });
     $("#getDateFromDb").click(function(){
-        
+        remuveChild("tableReport");
+        $("#tableReport").append('<thead class="thead-inverse" id="tThr"></thead>');
+        remuveChild("titleForReport");
+        remuveChild("newLgota");
         //alert($("#betweenDate").val().toString());
         //alert(123);
         $("#titleForReport").append("<p>Оборотная ведомость за период с "+$("#betweenDate").val().toString()+" до "+$("#toDate").val().toString()+"</p>");
@@ -15,7 +30,7 @@ $(document).ready(function(){
         function (res) { 
             var d = JSON.parse(res);
             console.log(d.mass);
-            var title=["Кол-во человек","Льгота","Период","начисления","сумма льготы","оплочено","супсидия","скидка","всего начислено","входящее сальдо","исходящее сальдо"];
+            var title=["Период","Постоянные начисления","Сумма льготы","Оплочено","Субсидия","Всего начислено","Долг на начало периода","Долг на конец периода","Количестов человек"];
             $("#tThr").append("<tr id='tt0'>");
             title.forEach(function(item, i, arr){
                 $("#tThr").append("<th>"+item+"</th>");
@@ -26,16 +41,16 @@ $(document).ready(function(){
                 $("#tableReport").append('<tr id=tableTr'+i+'></tr>');
                 for(var j=0;j<d.mass[i].length;j++)
                 {
-                    if (j<=4||j==6||j==8||j==9||j>=19) continue;
+                    if (j<=6||j==8||j==9||j==12||j==19||j==20||j==21||j>=23) continue;
                     if (j==7)
                     {
                         if (d.mass[i][j] == " ")
                         {
-                            $("#tableTr"+i).append('<td>Нет льготы</td>');
+                            $("#newLgota").append("Нет льготы");
                             continue;
                         }
                         else{
-                            $("#tableTr"+i).append('<td>Есть льготы</td>');
+                            $("#newLgota").append(d.mass[i][j]);
                             continue;
                         }
                     }
@@ -194,4 +209,10 @@ function valid(id,mask){
     if (a.length == $("#"+id).val().length)
     return true;
     else return false;
+}
+function remuveChild(child){
+    var myNode = document.getElementById(child);
+    while (myNode.firstChild) {
+        myNode.removeChild(myNode.firstChild);
+    }
 }

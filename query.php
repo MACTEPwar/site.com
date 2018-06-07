@@ -8,6 +8,7 @@ $password = ''; // пароль
 
 $link = mysqli_connect($host, $user, $password, $database) 
 or die("Ошибка " . mysqli_error($link));
+mysqli_set_charset($link,'utf8');
 if (isset($_POST['login_form']))
 { 
     $log = htmlentities(mysqli_real_escape_string($link, $_POST['login']));

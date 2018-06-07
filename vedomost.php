@@ -61,12 +61,12 @@
         <?php //var_dump($_SESSION[user]); 
         ?>
         <div class="container">
-            <div class="row">
+            <div class="row" style="background-color:#1936a0;color:white;box-shadow: 0px -10px 10px #20f5e1;border-radius: 10px;">
                 <nav class="navbar navbar-expand-lg navbar-light" style="min-width:100%;background-color:#1936a0;color:white;box-shadow: 0px -10px 10px #20f5e1;border-radius: 10px;">
                     
                     <div class="alaNavBar" style="display:contents;">
                         <img src="image/user.png" width="5%" style="padding: 0 15px 0 0;">
-                        <div style="padding: 0 15px 0 0; min-width:325px;">
+                        <div id="headerUser" style="padding: 0 15px 0 0; min-width:325px;">
                         <?php echo "<div align='left'>Абонент: ".$_SESSION['user'][2]." ".$_SESSION['user'][1]." ".$_SESSION['user'][3]."</div>
                             <div align='left'>Л\С: ".$_SESSION['user'][6]."</div>
                             <div align='left'>Адрес: ".$_SESSION['user'][5]."</div>";
@@ -103,8 +103,11 @@
                         </ul>
                         -->
                     </div>
-                  
+                    
                 </nav>
+                <div id="newLgota" style="padding-left:15px;padding-bottom:5px;">
+                        
+                </div>
             </div>
             <!--
             <div class="row" style="margin-top:10px;margin-bottom: 10px;">
@@ -122,6 +125,9 @@
                     <input type="date" name="toDate" id="toDate" autocomplete="off" class="form-control">
                   </label>
                   <label class="btn btn-secondary" id="getDateFromDb" style="background-color:#1936a0;width:34%;">Сформировать отчет
+                    <input type="radio" name="getDataFromDb">
+                  </label>
+                  <label class="btn btn-secondary" id="printReport" style="background-color:#1936a0;width:34%;">Печать
                     <input type="radio" name="getDataFromDb">
                   </label>
                 </div>
