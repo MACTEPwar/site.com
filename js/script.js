@@ -6,7 +6,7 @@ $(document).ready(function(){
         pr4 = document.getElementById('newLgota').outerHTML; 
         newWin=window.open('','printWindow','Toolbar=0,Location=0,Directories=0,Status=0,Menubar=0,Scrollbars=0,Resizable=0'); 
         newWin.document.open();
-        newWin.document.write('<html><head><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><link href="./css/style.css" rel="stylesheet"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"></head><body onafterprint="window.close;"><div class="container"><div class="row"><div class="col">'+pr2+'</div><div class="col">'+pr3+'</div></div><div class="row">'+pr4+'</div><div class="row">'+pr+'</div></div><script>$(document).ready(function(){window.print();});</script></body></html>'); 
+        newWin.document.write('<html><head><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><link href="./css/style.css" rel="stylesheet"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"></head><body onafterprint="window.close();"><div class="container"><div class="row"><div class="col">'+pr2+'</div><div class="col">'+pr3+'</div></div><div class="row">'+pr4+'</div><div class="row">'+pr+'</div></div><script>$(document).ready(function(){window.print();});</script></body></html>'); 
         
         newWin.document.close(); 
         
