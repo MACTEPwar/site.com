@@ -18,7 +18,7 @@
                 <div class="row" style="min-width:100%;padding-left:10px;padding-right:10px;background-color:white;">
                     <form class="form-horizontal"  style="min-width:100%;" action="./query.php?name=login_form" method="post">
                         <div class="row" style="margin-left:0px;margin-right:0px;">
-                            <input type="text" name="login" class="form-control" placeholder="Лоигн"/>
+                            <input type="text" name="login" class="form-control" placeholder="Лицевой счет"/>
                         </div>
                         <div class="row" style="margin-top:10px;margin-left:0px;margin-right:0px;">
                             <input type="password" name="pass" class="form-control" placeholder="Пароль"/> 

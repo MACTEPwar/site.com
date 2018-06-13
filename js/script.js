@@ -30,7 +30,7 @@ $(document).ready(function(){
         function (res) { 
             var d = JSON.parse(res);
             console.log(d.mass);
-            var title=["Период","Постоянные начисления","Сумма льготы","Оплочено","Субсидия","Всего начислено","Долг на начало периода","Долг на конец периода","Количестов человек"];
+            var title=["Период","Постоянные начисления","Оплата","Субсидия","Льгота","Всего начислено","Долг на начало периода","Долг на конец периода","Количестов человек"];
             $("#tThr").append("<tr id='tt0'>");
             title.forEach(function(item, i, arr){
                 $("#tThr").append("<th>"+item+"</th>");
@@ -46,10 +46,12 @@ $(document).ready(function(){
                     {
                         if (d.mass[i][j] == " ")
                         {
+                            remuveChild("newLgota");
                             $("#newLgota").append("Нет льготы");
                             continue;
                         }
                         else{
+                            remuveChild("newLgota");
                             $("#newLgota").append(d.mass[i][j]);
                             continue;
                         }
