@@ -41,7 +41,7 @@ $(document).ready(function(){
                 $("#tableReport").append('<tr id=tableTr'+i+'></tr>');
                 for(var j=0;j<d.mass[i].length;j++)
                 {
-                    var a,b,c,d,e,f;
+                    var a,b,c,dd,e,f;
                     if (j<=6||j==8||j==9||j==12||j==19||j==20||j==21||j>=23) continue;
                     if (j==7)
                     {
@@ -58,15 +58,21 @@ $(document).ready(function(){
                         }
                     }
                     if (j==11) c = parseFloat(d.mass[i][j]);
-                    if (j==14) d = parseFloat(d.mass[i][j]);
+                    if (j==14) dd = parseFloat(d.mass[i][j]);
                     if (j==15) e = parseFloat(d.mass[i][j]);
                     if (j==13) f = parseFloat(d.mass[i][j]);
-                    if (j==17) 
+                    if (j==17)
                     {
-                        a = c-d-e;
-                        $("#tableTr"+i).append('<td title="постоянные начисления - субсидия - льгота ('+c+' - '+d+' - '+e' = '+a+')">'+d.mass[i][j]+'</td>');
+                        a = c-dd-f;
+                        $("#tableTr"+i).append('<td title="постоянные начисления - субсидия - льгота ('+c+' - '+dd+' - '+e+' = '+a+')">'+d.mass[i][j]+'</td>');
                         continue;
                     }
+					if (j==18)
+					{
+						b = a + c - f;
+						$("#tableTr"+i).append('<td title="долг на конец периода + всего начислено - оплата ('+a+' + '+c+' - '+f+' = '+b+')">'+d.mass[i][j]+'</td>');
+						continue;
+					}
                     $("#tableTr"+i).append('<td>'+d.mass[i][j]+'</td>');
                 }
             }
