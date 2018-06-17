@@ -41,6 +41,7 @@ $(document).ready(function(){
                 $("#tableReport").append('<tr id=tableTr'+i+'></tr>');
                 for(var j=0;j<d.mass[i].length;j++)
                 {
+                    var a,b,c,d,e,f;
                     if (j<=6||j==8||j==9||j==12||j==19||j==20||j==21||j>=23) continue;
                     if (j==7)
                     {
@@ -55,6 +56,16 @@ $(document).ready(function(){
                             $("#newLgota").append(d.mass[i][j]);
                             continue;
                         }
+                    }
+                    if (j==11) c = parseFloat(d.mass[i][j]);
+                    if (j==14) d = parseFloat(d.mass[i][j]);
+                    if (j==15) e = parseFloat(d.mass[i][j]);
+                    if (j==13) f = parseFloat(d.mass[i][j]);
+                    if (j==17) 
+                    {
+                        a = c-d-e;
+                        $("#tableTr"+i).append('<td title="постоянные начисления - субсидия - льгота ('+c+' - '+d+' - '+e' = '+a+')">'+d.mass[i][j]+'</td>');
+                        continue;
                     }
                     $("#tableTr"+i).append('<td>'+d.mass[i][j]+'</td>');
                 }
