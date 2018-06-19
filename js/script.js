@@ -60,7 +60,7 @@ $(document).ready(function(){
                     if (j==11) c = parseFloat(d.mass[i][j]);
                     if (j==14) dd = parseFloat(d.mass[i][j]);
                     if (j==15) e = parseFloat(d.mass[i][j]);
-                    if (j==13) f = parseFloat(d.mass[i][j]);
+                    if (j==12) f = parseFloat(d.mass[i][j]);
 					if (j==17) g = parseFloat(d.mass[i][j]);
                     if (j==16)
                     {
