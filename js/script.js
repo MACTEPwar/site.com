@@ -41,7 +41,8 @@ $(document).ready(function(){
                 $("#tableReport").append('<tr id=tableTr'+i+'></tr>');
                 for(var j=0;j<d.mass[i].length;j++)
                 {
-                    var a,b,c,dd,e,f,g;
+                    var a,b,c,dd,e,f,g,h;
+					if (j==12) f = parseFloat(d.mass[i][j]);
                     if (j<=6||j==8||j==9||j==12||j==19||j==20||j==21||j>=23) continue;
                     if (j==7)
                     {
@@ -60,7 +61,7 @@ $(document).ready(function(){
                     if (j==11) c = parseFloat(d.mass[i][j]);
                     if (j==14) dd = parseFloat(d.mass[i][j]);
                     if (j==15) e = parseFloat(d.mass[i][j]);
-                    if (j==12) f = parseFloat(d.mass[i][j]);
+                    if (j==13) h = parseFloat(d.mass[i][j]);
 					if (j==17) g = parseFloat(d.mass[i][j]);
                     if (j==16)
                     {
@@ -70,8 +71,8 @@ $(document).ready(function(){
                     }
 					if (j==18)
 					{
-						b = g + c - f;
-						$("#tableTr"+i).append('<td title="долг на начало периода + всего начислено - оплата ('+g+' + '+c+' - '+f+' = '+b+')">'+d.mass[i][j]+'</td>');
+						b = g + a - h;
+						$("#tableTr"+i).append('<td title="долг на начало периода + всего начислено - оплата ('+g+' + '+a+' - '+h+' = '+b+')">'+d.mass[i][j]+'</td>');
 						continue;
 					}
                     $("#tableTr"+i).append('<td>'+d.mass[i][j]+'</td>');
