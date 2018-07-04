@@ -14,14 +14,20 @@
             <input type="button" value="Зарекгитрироваться" id="btnReg"/>
         </form>
         -->
-            <div class="container" style="max-width:400px;box-shadow: 0 0 7px 1px black;position:relative;top:30%;">
+            <div class="container" style="max-width:400px;box-shadow: 0 0 7px 1px black;position:relative;top:20%;">
                 <div class="row" style="min-width:100%;padding-left:10px;padding-right:10px;background-color:white;">
+                    <h1>Вход</h1>
                     <form class="form-horizontal"  style="min-width:100%;" action="./query.php?name=login_form" method="post">
                         <div class="row" style="margin-left:0px;margin-right:0px;">
                             <input type="text" name="login" class="form-control" placeholder="Лицевой счет"/>
                         </div>
                         <div class="row" style="margin-top:10px;margin-left:0px;margin-right:0px;">
                             <input type="password" name="pass" class="form-control" placeholder="Пароль"/> 
+                        </div>
+                        <div class="row" style="margin-left:0px;margin-right:0px;">
+                            <div class="alert alert-primary" role="alert">
+                                Введите свой лицевой счет и пароль для доступа в личный кабинет. Если Вы ранее не проходили этап регистрации, то нажмите на кнопку "Зарегистрироваться".
+                            </div>
                         </div>
                         <div class="row" style="margin-top:10px;margin-left:0px;margin-right:0px;">
                             <div class="col" style="padding:0;padding-right:5px;">

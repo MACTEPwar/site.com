@@ -105,10 +105,18 @@
                     </div>
                     
                 </nav>
+                
                 <div id="newLgota" style="padding-left:15px;padding-bottom:5px;">
                         
                 </div>
             </div>
+            <div class="row">
+            <div class="alert alert-success" role="alert">
+                Уважаемый абонент! Приветствуем Вас в личном кабинете! Ниже отображается ведомость вашего платежа за последний месяц.
+
+Вы также можете отобразить архив платежей, нажав на кнопку "архив платежей" и выбрать интересующую Вас дату.
+            </div>
+                </div>
             <!--
             <div class="row" style="margin-top:10px;margin-bottom: 10px;">
                 <input type="date" name="betweenDate" id="betweenDate" class="form-control"/>
@@ -116,18 +124,40 @@
                 <input type="button" name="getDataFromDb" value="Сформировать отчет" id="getDateFromDb" class="btn btn-primary"/>
             </div>
             -->
-            <div class="row">
+            <div class="row" style="box-shadow: 0px -10px 10px #20f5e1;border-radius: 10px;">
+                
+                <table id="tablePreview" class="table table-bordered" >
+                    <tr>
+                        <th>1</th>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <th>3</th>
+                        <td>4</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row" style="margin-top:0px;">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons"style="width:100%;" >
+                    <div class="btn btn-success" id="buy" style="width:50%;">Оплатить</div>
+                    <div class="btn btn-success" id="printPreview" style="width:50%;background-color:#1936a0;">Распечатать</div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:0px;">
+                <div class="btn btn-success" id="viewPreview" style="width:100%;background-color:#1936a0;">Архив платежей</div>
+            </div>
+            <div class="row" id="FullReport" style="display: none;">
                 <div class="btn-group btn-group-toggle" data-toggle="buttons" style="background-color:#1936a0;box-shadow: 0px -10px 10px #20f5e1;border-radius: 10px;width:100%;">
-                  <label class="btn btn-secondary" style="background-color:#1936a0;width:33%;">
-                    <input type="date" name="betweenDate" id="betweenDate" autocomplete="off" class="form-control">
+                  <label class="btn btn-secondary" style="background-color:#1936a0;display: -webkit-box;width:25%;">С
+                    <input type="date" name="betweenDate" id="betweenDate" autocomplete="off" class="form-control" style="margin-left:12px;">
                   </label>
-                  <label class="btn btn-secondary" style="background-color:#1936a0;width:33%;">
-                    <input type="date" name="toDate" id="toDate" autocomplete="off" class="form-control">
+                  <label class="btn btn-secondary" style="background-color:#1936a0;display: -webkit-box;width:25%;">До
+                    <input type="date" name="toDate" id="toDate" autocomplete="off" class="form-control" style="margin-left:12px;">
                   </label>
-                  <label class="btn btn-secondary" id="getDateFromDb" style="background-color:#1936a0;width:34%;">Сформировать отчет
+                  <label class="btn btn-secondary" id="getDateFromDb" style="background-color:#1936a0;width:25%;">Сформировать отчет
                     <input type="radio" name="getDataFromDb">
                   </label>
-                  <label class="btn btn-secondary" id="printReport" style="background-color:#1936a0;width:34%;">Печать
+                  <label class="btn btn-secondary" id="printReport" style="background-color:#1936a0;width:25%;">Печать
                     <input type="radio" name="getDataFromDb">
                   </label>
                 </div>

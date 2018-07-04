@@ -1,4 +1,25 @@
+var state = false;
 $(document).ready(function(){
+    $("#viewPreview").click(function(){
+        if (!state) 
+        {
+            $("#FullReport").css('display','flex');
+            state = true;
+        }
+        else 
+        {
+            $("#FullReport").css('display','none');
+            state = false;
+        }
+    });
+    
+    $("#printPreview").click(function(){
+        pr = document.getElementById('tablePreview').outerHTML;  
+        newWin=window.open('','printWindow','Toolbar=0,Location=0,Directories=0,Status=0,Menubar=0,Scrollbars=0,Resizable=0'); 
+        newWin.document.open();
+        newWin.document.write('<html><head><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><link href="./css/style.css" rel="stylesheet"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"></head><body onafterprint="window.close();"><div class="container"><div class="row">'+pr+'</div></div><script>$(document).ready(function(){window.print();});</script></body></html>');
+        newWin.document.close(); 
+    });
     $("#printReport").click(function(){
         pr = document.getElementById('tableReport').outerHTML;  
         pr2 = document.getElementById('headerUser').outerHTML;  
@@ -30,7 +51,7 @@ $(document).ready(function(){
         function (res) { 
             var d = JSON.parse(res);
             console.log(d.mass);
-            var title=["Период","Постоянные начисления","Оплата","Субсидия","Льгота","Всего начислено","Долг на начало периода","Долг на конец периода","Количестов человек"];
+            var title=["Период","Постоянные начисления","Оплачено","Субсидия","Льгота","Всего начислено","Долг на начало месяца","Долг на конец месяца","Количестов человек"];
             $("#tThr").append("<tr id='tt0'>");
             title.forEach(function(item, i, arr){
                 $("#tThr").append("<th>"+item+"</th>");
