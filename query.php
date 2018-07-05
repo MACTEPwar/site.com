@@ -1,6 +1,9 @@
 <?php
 session_start();
+//echo "<pre>";
 //var_dump($_POST);
+//echo $_POST;
+//echo "</pre>";
 $host = 'localhost'; // адрес сервера 
 $database = 'bdForSite'; // имя базы данных
 $user = 'root'; // имя пользователя

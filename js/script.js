@@ -51,7 +51,9 @@ $(document).ready(function(){
         function (res) { 
             var d = JSON.parse(res);
             console.log(d.mass);
-            var title=["Период","Постоянные начисления","Оплачено","Субсидия","Льгота","Всего начислено","Долг на начало месяца","Долг на конец месяца","Количестов человек"];
+            //console.log(reviewMass(d.mass[0],[10,2,3,22]));
+            //var title=["Период","Постоянные начисления","Льгота","Оплачено","Субсидия","Всего начислено","Долг на начало месяца","Долг на конец месяца","Количестов человек"];
+            var title=["Период","Долг на начало месяца","Постоянные начисления","Субсидия","Льгота","Всего начислено","Оплачено","Долг на конец месяца","Количестов человек",];
             $("#tThr").append("<tr id='tt0'>");
             title.forEach(function(item, i, arr){
                 $("#tThr").append("<th>"+item+"</th>");
@@ -60,11 +62,13 @@ $(document).ready(function(){
             for (var i=0;i<d.mass.length;i++)
             {
                 $("#tableReport").append('<tr id=tableTr'+i+'></tr>');
+                //var tempStr = "";
+                var tempMass = [];
                 for(var j=0;j<d.mass[i].length;j++)
                 {
                     var a,b,c,dd,e,f,g,h;
 					if (j==12) f = parseFloat(d.mass[i][j]);
-                    if (j<=6||j==8||j==9||j==12||j==19||j==20||j==21||j>=23) continue;
+                    if (j<=6||j==8||j==9||j==15||j==19||j==20||j==21||j>=23) continue;
                     if (j==7)
                     {
                         if (d.mass[i][j] == " ")
@@ -87,16 +91,29 @@ $(document).ready(function(){
                     if (j==16)
                     {
                         a = c-dd-f;
-                        $("#tableTr"+i).append('<td title="постоянные начисления - субсидия - льгота ('+c+' - '+dd+' - '+e+' = '+a+')">'+d.mass[i][j]+'</td>');
+                        //$("#tableTr"+i).append('<td title="постоянные начисления - субсидия - льгота ('+c+' - '+dd+' - '+f+' = '+a+')">'+d.mass[i][j]+'</td>');
+//                        tempStr += '<td title="постоянные начисления - субсидия - льгота ('+c+' - '+dd+' - '+f+' = '+a+')">'+d.mass[i][j]+'</td>';
+                        tempMass.push('<td title="постоянные начисления - субсидия - льгота ('+c+' - '+dd+' - '+f+' = '+a+')">'+d.mass[i][j]+'</td>');
                         continue;
                     }
 					if (j==18)
 					{
 						b = g + a - h;
-						$("#tableTr"+i).append('<td title="долг на начало периода + всего начислено - оплата ('+g+' + '+a+' - '+h+' = '+b+')">'+d.mass[i][j]+'</td>');
+						//$("#tableTr"+i).append('<td title="долг на начало периода + всего начислено - оплата ('+g+' + '+a+' - '+h+' = '+b+')">'+d.mass[i][j]+'</td>');
+//                        tempStr += '<td title="долг на начало периода + всего начислено - оплата ('+g+' + '+a+' - '+h+' = '+b+')">'+d.mass[i][j]+'</td>';
+                        tempMass.push('<td title="долг на начало месяца + всего начислено - оплата ('+g+' + '+a+' - '+h+' = '+b+')">'+d.mass[i][j]+'</td>');
 						continue;
 					}
-                    $("#tableTr"+i).append('<td>'+d.mass[i][j]+'</td>');
+                    //$("#tableTr"+i).append('<td>'+d.mass[i][j]+'</td>');
+                    //tempStr += '<td>'+d.mass[i][j]+'</td>';
+                    tempMass.push('<td>'+d.mass[i][j]+'</td>');
+                }
+                //$("#tableTr"+i).append(tempStr);
+                //console.log(tempMass);
+                var tmpArr = reviewMass(tempMass,[0,6,1,2,4,5,3,7,8]);
+                for (var ii = 0;ii<tempMass.length;ii++)
+                {
+                    $("#tableTr"+i).append(tmpArr[ii]);
                 }
             }
         });
@@ -257,4 +274,25 @@ function remuveChild(child){
     while (myNode.firstChild) {
         myNode.removeChild(myNode.firstChild);
     }
+}
+function reviewMass(arr,poradok) //два массива (массив, и порядк, в котором нужно его возвратить)
+{
+    var res = [];
+    for(var i = 0; i < poradok.length;i++)
+    {
+//        var tmp = arr[i];
+//        arr[i] = arr[poradok[i]];
+//        arr[poradok[i]] = tmp;
+        
+        res[i] = arr[poradok[i]];
+        
+//        for(var j = 0; j < arr.length;j++)
+//        {
+//            if(poradok[i] == j)
+//            {
+//                
+//            }
+//        }
+    }
+    return res;
 }

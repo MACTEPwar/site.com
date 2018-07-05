@@ -128,12 +128,12 @@
                 
                 <table id="tablePreview" class="table table-bordered" >
                     <tr>
-                        <th>1</th>
-                        <td>2</td>
+                        <th id="preview1"></th>
+                        <td id="preview12"></td>
                     </tr>
                     <tr>
-                        <th>3</th>
-                        <td>4</td>
+                        <th id="preview2"></th>
+                        <td id="preview22"></td>
                     </tr>
                 </table>
             </div>
@@ -183,6 +183,45 @@
             </div>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>    
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>  
+        <script>
+            String.prototype.replaceAt=function(index, replacement) {
+              return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
+            }
+            function ger(str, index, replacement)
+            {
+                return str.substr(0, index) + replacement+ str.substr(index + replacement.length);
+            }
+            $(document).ready(function(){
+                var date;
+                var currentDate = new Date();
+                if (currentDate.getDate()<11) date = new Date(currentDate.getFullYear(),currentDate.getMonth() - 1,1);
+                else new Date(currentDate.getFullYear(),currentDate.getMonth(),1);
+                var options = {
+                  month: 'long',
+                };
+                var word = date.toLocaleString("ru", options);
+                if (word[word.length-1] === 'т') word = ger(word,word.length-1,"а");
+                else word = ger(word,word.length-1,"я");
+                $("#preview1").append("Долг на начало "+ word);
+                $("#preview2").append("Начислено за "+ date.toLocaleString("ru", options));
+                $.post(
+                    './query.php',
+                    {
+                        'getDateFromDb':'1',
+                        'between':'01.'+ (date.getMonth() + 1) +'.'+date.getFullYear(),
+                        'to':'01.'+ (date.getMonth() + 1) +'.'+date.getFullYear(),
+                        //'between':'01.2.2018',
+                        //'to':'01.2.2018',
+                    },
+                    function(res){
+                        var d = JSON.parse(res);
+                        console.log(d.mass);
+                        $("#preview12").append(d.mass[0][17]);
+                        $("#preview22").append(d.mass[0][16]);
+                });
+            });
+            
+        </script>
     </body>
 </html>
