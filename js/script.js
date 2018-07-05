@@ -4,11 +4,13 @@ $(document).ready(function(){
         if (!state) 
         {
             $("#FullReport").css('display','flex');
+            $("#FullReport2").css('display','flex');
             state = true;
         }
         else 
         {
             $("#FullReport").css('display','none');
+            $("#FullReport2").css('display','none');
             state = false;
         }
     });

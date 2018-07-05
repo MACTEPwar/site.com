@@ -128,12 +128,12 @@
                 
                 <table id="tablePreview" class="table table-bordered" >
                     <tr>
-                        <th id="preview1"></th>
-                        <td id="preview12"></td>
+                        <th id="preview1" style="width:50%;"></th>
+                        <td id="preview12" style="width:50%;"></td>
                     </tr>
                     <tr>
-                        <th id="preview2"></th>
-                        <td id="preview22"></td>
+                        <th id="preview2" style="width:50%;"></th>
+                        <td id="preview22" style="width:50%;"></td>
                     </tr>
                 </table>
             </div>
@@ -162,22 +162,9 @@
                   </label>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="FullReport2" style="display: none;">
                 <table id="tableReport" class="table table-bordered" style="box-shadow: 0px -10px 10px #20f5e1;border-radius: 10px;width:100%;">
                     <thead class="thead-inverse" id="tThr">
-                        <!--
-                      <tr>
-                        <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
-                          <th>Username</th>
-                          <th>Username</th>
-                          <th>Username</th>
-                          <th>Username</th>
-                          <th>Username</th>
-                      </tr>
-                        -->
                     </thead>
                 </table>
             </div>
