@@ -8,7 +8,7 @@
     <body style="background-color:#1936a0;">
         <div class="container" style="max-width:400px;box-shadow: 0 0 7px 1px black;position:relative;">
                 <div class="row" style="min-width:100%;padding-left:10px;padding-right:10px;background-color:white;">
-                    <h1>Регитсрация</h1>
+                    <h1>Зарегистрироваться</h1>
                     <form class="form-horizontal"  style="min-width:100%;" action="./query.php?name=reg_form" method="post" id="regForm">
                         <div class="alert alert-success">Введите Ваши данные в соответствующие строки.</div>
                         <div class="row" style="margin-top:10px;margin-left:0px;margin-right:0px;">

@@ -182,10 +182,10 @@
             $(document).ready(function(){
                 var date;
                 var currentDate = new Date();
-                if (currentDate.getDate()<11) date = new Date(currentDate.getFullYear(),currentDate.getMonth() - 1,1);
-                else new Date(currentDate.getFullYear(),currentDate.getMonth(),1);
+                if (currentDate.getDate()<11) date = new Date(currentDate.getFullYear(),currentDate.getMonth() - 2,1);
+                else date =new Date(currentDate.getFullYear(),currentDate.getMonth() - 1,1);
                 var options = {
-                  month: 'long',
+                  month: 'long'
                 };
                 var word = date.toLocaleString("ru", options);
                 if (word[word.length-1] === 'т') word = ger(word,word.length-1,"а");

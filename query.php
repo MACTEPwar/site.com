@@ -74,7 +74,7 @@ else if(isset($_POST['btnReg']))
     $patronymic = htmlspecialchars($_POST['patronymic'],ENT_QUOTES);
     $phone = htmlspecialchars($_POST['phone'],ENT_QUOTES);
     $address = htmlspecialchars($_POST['address'],ENT_QUOTES);
-    $regLogin = htmlspecialchars($_POST['regLogin'],ENT_QUOTES);
+    $regLogin = strval(intval(htmlspecialchars($_POST['regLogin'],ENT_QUOTES)));
     
     if (preg_match('/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/',$_POST['email'],$matches)) $email = $matches[0];
     else 
@@ -102,7 +102,7 @@ else if(isset($_POST['getDateFromDb']))
     $toDate = strComplete(str_replace("-",".",$_POST['to']));
     //echo $betweenDate." \n".$toDate;
     
-    $database   = "31.202.199.91:C:\gradient\db\kmn.fdb";
+    $database   = "91.250.41.166:C:\gradient\db\kmn.fdb";
     $user       = "SYSDBA";
     $password   = "masterkey";
     $db = ibase_connect($database, $user, $password, 'utf8');

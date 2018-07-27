@@ -14,7 +14,6 @@ $(document).ready(function(){
             state = false;
         }
     });
-    
     $("#printPreview").click(function(){
         pr = document.getElementById('tablePreview').outerHTML;  
         newWin=window.open('','printWindow','Toolbar=0,Location=0,Directories=0,Status=0,Menubar=0,Scrollbars=0,Resizable=0'); 
@@ -55,7 +54,7 @@ $(document).ready(function(){
             console.log(d.mass);
             //console.log(reviewMass(d.mass[0],[10,2,3,22]));
             //var title=["Период","Постоянные начисления","Льгота","Оплачено","Субсидия","Всего начислено","Долг на начало месяца","Долг на конец месяца","Количестов человек"];
-            var title=["Период","Долг на начало месяца","Постоянные начисления","Субсидия","Льгота","Всего начислено","Оплачено","Долг на конец месяца","Количестов человек",];
+            var title=["Период","Долг на начало месяца","Постоянные начисления","Льгота","Субсидия","Всего начислено","Оплачено","Долг на конец месяца","Количество человек",];
             $("#tThr").append("<tr id='tt0'>");
             title.forEach(function(item, i, arr){
                 $("#tThr").append("<th>"+item+"</th>");
